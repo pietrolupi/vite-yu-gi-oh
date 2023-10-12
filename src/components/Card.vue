@@ -2,8 +2,17 @@
 
 
 <script>
+
+import { store } from '../data/store';
+
 export default {
   name: 'Card',
+
+  data(){
+    return{
+      store
+    }
+  }
 }
 </script>
 
@@ -11,7 +20,7 @@ export default {
 <template>
   <div class="card-container">
     <img src="https://images.ygoprodeck.com/images/cards/34541863.jpg" alt="">
-    <h3>NOME CARTA</h3>
+    <h3>{{store.provaTest}}</h3>
     <p>Tipologia</p>
   </div>
 </template>

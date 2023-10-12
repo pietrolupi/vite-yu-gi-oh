@@ -33,16 +33,23 @@ export default {
     </select>
 
     <div class="container">
+      
       <div class="results-bar w-100 d-flex">
         <p>Numero di carte trovate</p>
       </div>
-
-      <Card v-for="card in store.cardList"
-      :key="card.id"
-      :name="card.name"
-      :archetype="card.archetype"
-      :img="card.card_images[0].image_url" />
       
+      <div v-if="store.cardList.length === 20" class="w-100 d-flex justify-content-between flex-wrap ">
+        
+        <Card  v-for="card in store.cardList"
+          :key="card.id"
+          :name="card.name"
+          :archetype="card.archetype"
+          :img="card.card_images[0].image_url" /> 
+      </div>
+        
+        <div v-else class="loading">
+          <i class="fa-solid fa-hourglass-half"></i>
+        </div>
 
     </div>
 
@@ -71,6 +78,18 @@ export default {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
+      min-height: 80vh;
+      position: relative;
+
+      .loading{
+        font-size: 8rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+
+      }
 
       .results-bar{
         background-color: black;

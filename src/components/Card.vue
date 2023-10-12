@@ -39,6 +39,7 @@ export default {
     display: flex;
     flex-direction: column;
     text-align: center;
+    position: relative;
 
     h3{
       color: white;
@@ -47,7 +48,11 @@ export default {
     }
 
     p{
-      padding-top: 30px;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%)
+
     }
 
     img{

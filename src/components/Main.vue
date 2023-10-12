@@ -2,13 +2,21 @@
 <script>
 
 import Card from './Card.vue';
+import { store } from '../data/store';
 
 export default {
   name: 'Main',
   
   components:{
     Card,
-  }
+  },
+
+  data(){
+    return{
+      store
+    }
+  },
+  
 
 }
 </script>
@@ -29,13 +37,12 @@ export default {
         <p>Numero di carte trovate</p>
       </div>
 
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
+      <Card v-for="card in store.cardList"
+      :key="card.id"
+      :name="card.name"
+      :archetype="card.archetype"
+      :img="card.card_images[0].image_url" />
+      
 
     </div>
 

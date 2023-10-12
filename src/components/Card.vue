@@ -1,27 +1,27 @@
 
 
-
 <script>
 
-import { store } from '../data/store';
 
 export default {
   name: 'Card',
 
-  data(){
-    return{
-      store
-    }
+  props:{
+    name: String,
+    archetype: String,
+    img: String
   }
+
+
 }
 </script>
 
 
 <template>
   <div class="card-container">
-    <img src="https://images.ygoprodeck.com/images/cards/34541863.jpg" alt="">
-    <h3>{{store.provaTest}}</h3>
-    <p>Tipologia</p>
+    <img :src="img" alt="">
+    <h3>{{name}}</h3>
+    <p>{{ archetype }}</p>
   </div>
 </template>
 

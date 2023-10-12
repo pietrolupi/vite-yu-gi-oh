@@ -35,7 +35,7 @@ export default {
     <div class="container">
       
       <div class="results-bar w-100 d-flex">
-        <p>Numero di carte trovate</p>
+        <p v-if="store.cardList.length === store.cardListLength">Found {{ store.cardListLength }} cards</p>
       </div>
       
       <div v-if="store.cardList.length === store.cardListLength" class="w-100 d-flex justify-content-between flex-wrap ">

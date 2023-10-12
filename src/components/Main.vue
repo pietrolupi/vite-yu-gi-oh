@@ -38,7 +38,7 @@ export default {
         <p>Numero di carte trovate</p>
       </div>
       
-      <div v-if="store.cardList.length === 20" class="w-100 d-flex justify-content-between flex-wrap ">
+      <div v-if="store.cardList.length === store.cardListLength" class="w-100 d-flex justify-content-between flex-wrap ">
         
         <Card  v-for="card in store.cardList"
           :key="card.id"

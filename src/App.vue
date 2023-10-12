@@ -22,8 +22,10 @@
       getApi(){
         axios.get(store.apiUrl)
         .then(res =>{
+          store.cardListLength = res.data.meta.current_rows
           store.cardList = res.data.data
           console.log(this.store.cardList);
+          console.log( 'QUIIII'+this.store.cardListLength);
         })
       }
     },
@@ -34,7 +36,7 @@
     },
 
     mounted(){
-    console.log(this.store.cardList[1].card_images[0].id);
+    
   }
 
     

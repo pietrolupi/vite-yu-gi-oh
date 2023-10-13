@@ -4,12 +4,14 @@
   import Header from './components/Header.vue';
   import Main from './components/Main.vue';
   import axios from 'axios';
+  import SearchBar from './components/SearchBar.vue';
 
   export default {
 
     components: {
       Header,
-      Main
+      Main,
+      SearchBar
     },
 
     data(){
@@ -19,25 +21,49 @@
     },
 
     methods:{
-      getApi(){
-        axios.get(store.apiUrl)
+
+      getSelectedApi(){
+
+        axios.get(store.apiUrl,{
+          params:{
+            archetype: store.archetypeToSearch
+          }
+        }).then(res=> {
+
+          store.cardList = res.data.data
+          console.log('QUI---' + this.store.cardList);
+
+        })
+      },
+
+      getRandomApi(){
+        store.cardList = []
+        axios.get(store.randomApiUrl)
+        
         .then(res =>{
+          
           store.cardListLength = res.data.meta.current_rows
           store.cardList = res.data.data
           console.log(this.store.cardList);
-          console.log( 'QUIIII'+this.store.cardListLength);
+         
         })
-      }
+      },
+
+      getArchetypesApi(){
+      axios.get(store.archetypesApiUrl)
+      .then(res=>{
+          store.archetypesList = res.data
+          console.log(store.archetypesList);
+        ;
+      })
+    },
     },
 
     created(){
-      this.getApi()
-      console.log(this.store.cardList);
-    },
+      this.getArchetypesApi()
+     /*  this.getRandomApi() */
 
-    mounted(){
-    
-  }
+    },
 
     
 
@@ -47,6 +73,7 @@
 
 <template>
   <Header/>
+  <SearchBar @startSearch="getRandomApi"/>
   <Main/>
 </template>
 

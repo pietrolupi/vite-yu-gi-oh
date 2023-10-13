@@ -25,20 +25,13 @@ export default {
 
   <main>
 
-    <select class="cstm-select form-select" aria-label="Default select example">
-      <option selected>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-
     <div class="container">
       
       <div class="results-bar w-100 d-flex">
-        <p v-if="store.cardList.length === store.cardListLength">Found {{ store.cardListLength }} cards</p>
+        <span v-if="store.cardList.length === store.cardListLength">Found {{ store.cardListLength }} cards</span>
       </div>
       
-      <div v-if="store.cardList.length === store.cardListLength" class="w-100 d-flex justify-content-between flex-wrap ">
+      <div v-if="store.cardList.length === store.cardListLength" class="w-100 d-flex flex-wrap justify-content-between ">
         
         <Card  v-for="card in store.cardList"
           :key="card.id"
@@ -76,7 +69,6 @@ export default {
       background-color: white;
       padding: 0 40px;
       display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
       min-height: 80vh;
       position: relative;
@@ -95,6 +87,10 @@ export default {
         background-color: black;
         color: white;
         height: 50px;
+        padding-left: 10px;
+        display: flex;
+        align-items: center;
+        
       }
 
     }
